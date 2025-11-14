@@ -26,6 +26,12 @@ except SystemExit as e:
 init_states()
 
 # Página de bienvenida. Streamlit creará la barra lateral automáticamente a partir de los ficheros en la carpeta /pages.
+st.markdown("""
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 10px 20px; border-radius: 10px; margin-bottom: 20px;">
+    <h2 style="color: white; margin: 0; text-align: center;">🏭 VERSIÓN INDUSTRIAL</h2>
+</div>
+""", unsafe_allow_html=True)
+
 st.title("Bienvenid@ al Generador de Contenido con IA")
 st.markdown("---")
 st.image('assets/logos/logo.png', width=400)

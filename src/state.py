@@ -40,6 +40,14 @@ def init_states():
             st.session_state.openai_configured = False
             st.error("Error al configurar OpenAI. Revisa la OPENAI_API_KEY.")
 
+    # Banner de versión industrial
+    st.markdown("""
+    <div style="position: fixed; top: 60px; right: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                padding: 8px 15px; border-radius: 8px; z-index: 999; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <span style="color: white; font-weight: bold; font-size: 14px;">🏭 VERSIÓN INDUSTRIAL</span>
+    </div>
+    """, unsafe_allow_html=True)
+
     # Estilos CSS para toda la app
     st.markdown("""
     <style>

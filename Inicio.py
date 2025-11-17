@@ -8,8 +8,8 @@ from src.state import init_states
 from src.utils import check_env_vars
 
 st.set_page_config(
-    page_title="Generador IA de Contenido",
-    page_icon="🤖",
+    page_title="Generador Contenido INDUSTRIAL",
+    page_icon="🏭",
     layout="wide"
 )
 

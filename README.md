@@ -114,11 +114,3 @@ docker-compose down
 # Reconstruir imágenes
 docker-compose build --no-cache
 ```
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios propuestos.
-
-## 📝 Licencia
-
-Este proyecto está bajo licencia MIT.

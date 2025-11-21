@@ -24,4 +24,5 @@ streamlit-autorefresh
 heyoo~=0.1.2
 
 openpyxl~=3.1.5
-html2text~=2025.4.15msal~=1.31.0
+html2text~=2025.4.15
+msal~=1.31.0

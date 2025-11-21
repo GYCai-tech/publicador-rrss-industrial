@@ -272,8 +272,8 @@ with col_form:
         # Selección de plataformas
         st.markdown("##### 1. Selecciona las plataformas")
         cols = st.columns(5)
-        platform_names = ["LinkedIn", "Instagram", "WordPress", "Gmail", "WhatsApp"]
-        platform_colors = ["#0A66C2", "#E4405F", "#21759B", "#EA4335", "#25D366"]
+        platform_names = ["LinkedIn", "Instagram", "WordPress", "Email Corporativo", "WhatsApp"]
+        platform_colors = ["#0A66C2", "#E4405F", "#21759B", "#0078D4", "#25D366"]
 
         st.session_state.selected_platforms = []
         for i, name in enumerate(platform_names):
@@ -289,7 +289,10 @@ with col_form:
                 is_selected = st.checkbox(name, key=f"platform_select_{name.lower()}", label_visibility="collapsed")
 
                 if is_selected:
-                    st.session_state.selected_platforms.append(name)
+                    # Mapear "Email Corporativo" a "Gmail" internamente para compatibilidad
+                    platform_internal = "Gmail" if name == "Email Corporativo" else name
+                    st.session_state.selected_platforms.append(platform_internal)
+
 
         # Formulario para los detalles del contenido de texto
         with st.form("content_form"):
@@ -362,7 +365,8 @@ with col_preview:
     if 'content_history' not in st.session_state:
         st.session_state.content_history = {}
     # Unir plataformas seleccionadas y plataformas con contenido para mostrar
-    platforms_to_show = set(st.session_state.get('results', {}).keys())
+    # Usar lista ordenada en lugar de set para mantener orden consistente entre reruns
+    platforms_to_show = sorted(st.session_state.get('results', {}).keys())
 
     if platforms_to_show:
         tabs = st.tabs([f"{plat}" for plat in platforms_to_show])
@@ -569,12 +573,20 @@ with col_preview:
                                 )
 
                             st.markdown("##### 2. Añade destinatarios manualmente (opcional)")
-                            st.session_state[manual_contacts_key] = st_tags(
-                                label=f"Escribe {contact_label} y presiona Enter",
-                                text="Añadir...",
-                                value=st.session_state[manual_contacts_key],
-                                key=f"tags_manual_{platform}"
+                            
+                            # Obtener el valor actual del session state si existe
+                            current_manual = ", ".join(st.session_state.get(manual_contacts_key, []))
+                            
+                            manual_text = st.text_input(
+                                "Correos separados por coma",
+                                value=current_manual,
+                                placeholder="correo1@ejemplo.com, correo2@ejemplo.com",
+                                key=f"manual_emails_{platform}"
                             )
+                            if manual_text:
+                                st.session_state[manual_contacts_key] = [e.strip() for e in manual_text.split(",") if e.strip()]
+                            else:
+                                st.session_state[manual_contacts_key] = []
 
                             # Combinar los destinatarios de las selecciones y los manuales.
                             final_destinations = destinations_from_selection.union(set(st.session_state[manual_contacts_key]))

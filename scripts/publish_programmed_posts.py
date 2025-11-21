@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 
 from src.db_config import get_programmed_posts_raw, update_post
-from src.gmail import send_mail
+from src.graph_mail import send_mail_graph
 from src.wordpress import create_post_wordpress, upload_media
 from src.instagram import post_image_ig, post_carousel_ig, post_video_ig
 # from src.whatsapp import send_whatsapp
@@ -88,7 +88,7 @@ def publicar_post(post: dict):
         elif platform_lower == 'gmail':
             # Adjuntar todas las imágenes y vídeos
             attachments = image_paths + video_paths
-            send_mail(
+            send_mail_graph(
                 receivers=post.get('contacts', []),
                 subject=post.get('asunto', ''),
                 content_text=post.get('content', ''),

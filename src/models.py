@@ -2,7 +2,7 @@ import os
 import logging
 from datetime import datetime
 from typing import List, Dict, Any, Optional
-from langchain.schema.messages import SystemMessage, HumanMessage
+from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 from . import prompts

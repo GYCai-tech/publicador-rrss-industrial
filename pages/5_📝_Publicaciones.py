@@ -9,6 +9,12 @@ from src.state import init_states
 init_states()
 st.set_page_config(layout="wide")
 
+st.markdown("""
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 40px; border-radius: 15px; margin-bottom: 20px; width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">
+    <h1 style="color: white; margin: 0; font-size: 4rem; font-weight: bold;">🏭 VERSIÓN INDUSTRIAL</h1>
+</div>
+""", unsafe_allow_html=True)
+
 if st.session_state.get('force_page_rerun', False):
     st.session_state.force_page_rerun = False
 

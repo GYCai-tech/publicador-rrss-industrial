@@ -7,6 +7,12 @@ from typing import List, Tuple
 # --- Configuración e Inicialización ---
 st.set_page_config(layout="wide", page_title="Gestión de Contactos", page_icon="👥")
 
+st.markdown("""
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 40px; border-radius: 15px; margin-bottom: 20px; width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">
+    <h1 style="color: white; margin: 0; font-size: 4rem; font-weight: bold;">🏭 VERSIÓN INDUSTRIAL</h1>
+</div>
+""", unsafe_allow_html=True)
+
 if 'editing_contact_id' not in st.session_state:
     st.session_state.editing_contact_id = None
 if 'import_step' not in st.session_state:
